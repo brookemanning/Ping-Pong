@@ -3,57 +3,55 @@ figure;
 
 screen_width = 800; % Width of the screen
 screen_height = 600; % Height of the screen
+axes('Position', [0, 0, 1, 1], 'XLim', [0, 1], 'YLim', [0, 1], 'Visible', 'on');
 
-
-paddlewidth = 0.015
-paddleheight = 0.15
+paddlewidth = 0.015;
+paddleheight = 0.10
 
 % Player 1 Paddle 
-paddleA_position = [0, 0.5 - (paddleheight/2), paddlewidth, paddleheight]
+paddleAposition = [0, 0.5 - (paddleheight/2), paddlewidth, paddleheight]
 % Player 2 Paddle 
-paddleB_position = [1 - paddlewidth, 0.5 - (paddleheight/2), paddlewidth, paddleheight]
+paddleBposition = [1 - paddlewidth, 0.5 - (paddleheight/2), paddlewidth, paddleheight]
 
-paddleA = rectangle('Position', paddleA_position, 'FaceColor', 'red'); 
-paddleB = rectangle('Position', paddleB_position, 'FaceColor', 'blue');
+paddleA = rectangle('Position', paddleAposition, 'FaceColor', 'red'); 
+paddleB = rectangle('Position', paddleBposition, 'FaceColor', 'blue');
 
+% define variables in global function 
 global wKeyPressed sKeyPressed upArrowPressed downArrowPressed;
-
 
 % Set up KeyPressFcn/KeyReleaseFcn callback function
 set(gcf, 'KeyPressFcn', @keyDown);
 set(gcf, 'KeyReleaseFcn', @keyUp);
 
-% variables for key press 
+% initializing variables for key press 
 upArrowPressed = false; 
 downArrowPressed = false; 
 wKeyPressed = false; 
 sKeyPressed = false;
 
-    % Updating movement — updated by storing code inside infinite loop im
-    % showinside
+    % Updating movement of paddles with while loop and if statements 
     
     while true 
         if wKeyPressed
-            paddleA_position.Position(2) = paddleA_position.Position(2) + 0.05; 
-            set(paddleA, 'Position', paddleA_position); 
+            paddleAposition(2) = min(1-paddleheight, paddleAposition(2) + 0.01); 
+            set(paddleA, 'Position', paddleAposition); 
         elseif sKeyPressed
-            paddleA_position.Position(2) = paddleA_position.Position(2) - 0.05; 
-            set(paddleA, 'Position', paddleA_position); 
+            paddleAposition(2) = max(0, paddleAposition(2) - 0.01); 
+            set(paddleA, 'Position', paddleAposition);   
         end 
 
-        if downArrowPressed
-            paddleB_position.Position(2) = paddleB_position.Position(2) - 0.05;
-            set(paddleB, 'Position', paddleB_position); 
-        elseif upArrowPressed
-            paddleB_position.Position(2) = paddleB_position.Position(2) + 0.05; 
-            set(paddleB, 'Position', paddleB_position);
-        end
-      pause(0.01); 
+        if upArrowPressed
+            paddleBposition(2) = min(1-paddleheight, paddleBposition(2) + 0.01); 
+            set(paddleB, 'Position', paddleBposition);
+        elseif downArrowPressed
+            paddleBposition(2) = max(0, paddleBposition(2) - 0.01);
+            set(paddleB, 'Position', paddleBposition); 
+        end 
+        pause(0.01); 
     end 
-
-    % callback for key press 
     % Callback function for key press
     function keyDown(~, event)
+    global wKeyPressed sKeyPressed upArrowPressed downArrowPressed;
         switch event.Key
             case 'uparrow'
                 upArrowPressed = true;
@@ -68,6 +66,7 @@ sKeyPressed = false;
 
     % Callback function for key release
     function keyUp(~, event)
+    global wKeyPressed sKeyPressed upArrowPressed downArrowPressed;
         switch event.Key
             case 'uparrow'
                 upArrowPressed = false;
