@@ -19,11 +19,11 @@ line(x_center,y_center,'Color','white','LineStyle','--','LineWidth',6);
 paddlewidth = 0.015;
 paddleheight = 0.15;
 %initial paddle position!
-paddleA_position = [0,0.5 - (paddleheight/2),paddlewidth,paddleheight];
-paddleB_position = [1-paddlewidth,0.5 - (paddleheight/2),paddlewidth,paddleheight];
+paddleAposition = [0,0.5 - (paddleheight/2),paddlewidth,paddleheight];
+paddleBposition = [1-paddlewidth,0.5 - (paddleheight/2),paddlewidth,paddleheight];
 %create rectangular paddles
-paddleA = rectangle(ax,'Position',paddleA_position,'EdgeColor','white','FaceColor','white');
-paddleB = rectangle(ax,'Position',paddleB_position,'EdgeColor','white','FaceColor','white');
+paddleA = rectangle(ax,'Position',paddleAposition,'EdgeColor','white','FaceColor','white');
+paddleB = rectangle(ax,'Position',paddleBposition,'EdgeColor','white','FaceColor','white');
 
 %creating the ball
 % %initial ball position!
@@ -36,7 +36,7 @@ ball = rectangle(ax,'Position',[ballposition - ballradius,ballradius + (ballradi
 %creating the scoreboard
 
 %initialize variable
-ballposition_start = [7, 15];
+ballposition_start = [0.5, 0.5];
 ballposition = []; %ball starts in the middle of the board
 ballvelocity=[0.01,0.01];
 ballradius = 0.5;
@@ -105,7 +105,7 @@ while true
         %0, it has hit the bottom of the board. If it is greater than or
         %equal to the board height, it has hit the top of the board
         ballvelocity(2) = -ballvelocity(2); %reverse y component of velocity to bounce off the ceiling/floor
-    end
+    end 
 
     %CHECK FOR COLLISION WITH PADDLE A
     %check if the ball is within the x and y coordinates of paddle A 
@@ -117,7 +117,6 @@ while true
         ballvelocity(1) = -ballvelocity(1); 
         ballposition(1) = paddleAposition(1) + paddleAposition(3) + ballradius;
                    
-    end
 
     %CHECK FOR COLLISION WITH PADDLE B
     inbounds_paddleBx = (ballposition(1)>=paddleBposition(1) && ballposition(1) <= (paddleBposition(1)+paddleBposition(3)));
@@ -157,6 +156,7 @@ if score_playerB > score_playerA && score_playerB >= 5
     score_playerA = 0; 
     score_playerB = 0;
         break; 
+end 
 end 
 drawnow; 
 pause(0.1); 
