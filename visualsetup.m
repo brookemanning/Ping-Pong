@@ -31,16 +31,14 @@ paddleB = rectangle('Parent',ax,'Position',paddleB_position,'EdgeColor','white',
 
 %creating the scoreboard
 %ENTER SCORE A AND SCORE B INITIALIZATION
-Score_PlayerA = 0;
-Score_PlayerB = 0;
+score_playerA = 0;
+score_playerB = 0;
 strScoreA = num2str(Score_PlayerA);
 strScoreB = num2str(Score_PlayerB);
 paddleA_score = text(ax,0.45,0.1,strScoreA,'Color',[0.7,0.7,0.7],'FontSize',30,'HorizontalAlignment','center');
 paddleB_score = text(ax,0.55,0.1,strScoreB,'Color',[0.7,0.7,0.7],'FontSize',30,'HorizontalAlignment','center');
 
-axis off;
-xlim([0,1]);
-ylim([0,1]);
+
 
 
 %creating the ball
