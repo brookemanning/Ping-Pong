@@ -114,6 +114,10 @@ function Pingpong()
                 upArrowPressed = true;
             case 'downarrow'
                 downArrowPressed = true;
+            case 'w'
+                wKeyPressed = true;
+            case 's'
+                sKeyPressed = true;
         end
     end
 
@@ -124,6 +128,10 @@ function Pingpong()
                 upArrowPressed = false;
             case 'downarrow'
                 downArrowPressed = false;
+            case 'w'
+                wKeyPressed = false;
+            case 's'
+                sKeyPressed = false;
         end
     end
 
