@@ -122,6 +122,7 @@ if score_playerB > score_playerA && score_playerB >= 5
 end  
 drawnow; 
 pause(0.1); 
+ 
 
            % Callback function for key press
    function keyDown(~, event)
