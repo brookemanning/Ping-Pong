@@ -1,5 +1,4 @@
 function Pingpong()
-
     %CREATE GAMEBOARD
     %creating background
     tablecolor = uint8([42,54,74]);
@@ -35,7 +34,7 @@ function Pingpong()
     ballposition = [0.5 + ballradius/2,0.5];
     ballcolor = uint8([255,193,59]);
     ball = rectangle('Parent',ax,'Position',[ballposition - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-    ballvelocity = [-0.01,0.001];
+    ballvelocity = [0.01,0.01];
     
     %creating the scoreboard
     Score_PlayerA = 0;
@@ -68,7 +67,7 @@ function Pingpong()
         %edges of the board
         if ballposition(1) - ballradius<=0|| ballposition(1) + ballradius>= boardwidth %left/right
             ballvelocity = [0,0]; %left/right
-        elseif ballposition(2) - ballradius<=0 || ballposition(2) + ballradius >= boardheight %ceiling/bottom
+        elseif ballposition(2) - ballradius<=0 || ballposition(2) + ballradius >= 1 %ceiling/bottom
             ballvelocity(2) = -ballvelocity(2); %top/bottom
         end
 
@@ -87,7 +86,8 @@ function Pingpong()
         if inbounds_paddleBx && inbounds_paddleBy
            ballvelocity(1) = -ballvelocity(1);
         end
-
+        
+        speedLevel = 0.01;
         if wKeyPressed
             paddleAposition(2) = min(1-paddleheight, paddleAposition(2) + speedLevel);
             set(paddleA, 'Position', paddleAposition);
@@ -103,8 +103,8 @@ function Pingpong()
         elseif downArrowPressed
             paddleBposition(2) = max(0, paddleBposition(2) - speedLevel);
             set(paddleB, 'Position', paddleBposition);
-              
         end
+              
     end
 
    % Callback function for key press
