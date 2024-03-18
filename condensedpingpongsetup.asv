@@ -54,7 +54,8 @@ function condensedpingpongsetup()
     end
 %mode selector ends HERE ------------------
 
-%game code starts HERE ------------------
+%game code starts HERE 
+
     function pingpong(ballvelocity, speedLevel)
     %-- CREATING GAMEBOARD + VISUALS --
     % creating background
@@ -257,8 +258,6 @@ function condensedpingpongsetup()
         close(board);
         condensedpingpongsetup();
     end
-    end
-%game code ends HERE ------------------
 
-%whole ping pong ends HERE ------------------
+    end
 end
