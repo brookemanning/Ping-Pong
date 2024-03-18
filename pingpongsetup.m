@@ -247,6 +247,16 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
+
+    %create replay 
+    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
+    set(replay,'ButtonDownFcn',@replaypong);
+    %callback function to start a new game of easy ping pong
+    function replaypong(~, ~)
+        close(board);
+        pingpongsetup();
+    end
+
     end
 %EASY mode ping pong ends HERE ------------------
 
@@ -450,6 +460,16 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
+
+    %create replay 
+    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
+    set(replay,'ButtonDownFcn',@replaypong);
+    %callback function to start a new game of easy ping pong
+    function replaypong(~, ~)
+        close(board);
+        pingpongsetup();
+    end
+
     end
 %MEDIUM mode ping pong ends HERE ------------------
 
@@ -653,9 +673,19 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
+
+    %create replay 
+    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
+    set(replay,'ButtonDownFcn',@replaypong);
+    %callback function to start a new game of easy ping pong
+    function replaypong(~, ~)
+        close(board);
+        pingpongsetup();
+    end
+
     end
 %HARD mode ping pong ends HERE ------------------
 
-
+    
 %end of whole ping pong
 end

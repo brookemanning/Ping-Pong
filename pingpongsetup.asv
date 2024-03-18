@@ -3,7 +3,7 @@
 
 %potential adding callback function for level selector: yuki 
 
-%whole ping pong starts HERE ---------------
+%whole ping pong starts HERE ------------------
 function pingpongsetup()
 
 
@@ -47,6 +47,11 @@ function pingpongsetup()
         close(board);
         hardmode_pingpong();
     end
+    
+    % %pre set replay to be functional in ALL modes
+    % replay = text(ax,0.5,0.3,'replay','Color','none','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
+    % 
+
 %mode selector ends HERE ------------------
 
 %EASY mode ping pong starts HERE ------------------
@@ -248,6 +253,8 @@ function pingpongsetup()
         set(paddleB_score, 'String', num2str(score_playerB));
     end
     end
+
+
 %EASY mode ping pong ends HERE ------------------
 
 
@@ -290,7 +297,7 @@ function pingpongsetup()
         ballposition = ballposition_start; 
         ballcolor = uint8([255,193,59]);
         ball = rectangle('Parent',ax,'Position',[ballposition_start - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-        ballvelocity = [0.015,0.015];
+        ballvelocity = [0.02,0.02];
     
     % creating the scoreboard
         score_playerA = 0;
@@ -493,7 +500,7 @@ function pingpongsetup()
         ballposition = ballposition_start; 
         ballcolor = uint8([255,193,59]);
         ball = rectangle('Parent',ax,'Position',[ballposition_start - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-        ballvelocity = [0.015,0.015];
+        ballvelocity = [0.04,0.04];
     
     % creating the scoreboard
         score_playerA = 0;
@@ -655,6 +662,8 @@ function pingpongsetup()
     end
     end
 %HARD mode ping pong ends HERE ------------------
+
+    
 
 
 %end of whole ping pong
