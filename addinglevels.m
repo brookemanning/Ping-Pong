@@ -68,11 +68,12 @@ function visual_ball_movement_v4()
 
     %DEFINING LEVELS
 
-    choose_difficulty_message = 'Choose the difficulty:';
-    easy_message = '1. Easy';
-    medium_message = '2. Medium';
-    hard_message = '3. Hard';
-    choice = input ('Choose 1, 2 or 3');
+    choose_difficulty_message = 'Choose the difficulty: 1. Easy, 2. Medium, 3. Hard';
+    %easy_message = '1. Easy';
+    %medium_message = '2. Medium';
+    %hard_message = '3. Hard';
+    text(ax, 0.5, 0.5, choose_difficulty_message, 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
+    choice = input('Choose 1 for Easy, 2 for Medium, or 3 for Hard: ', 's');
 
     if choice == '1' %easy level
         ballvelocity = [0.015,0.015];
@@ -82,11 +83,9 @@ function visual_ball_movement_v4()
         speedLevel = 0.03;
     elseif choice == '3' %hard level
         ballvelocity = [0.03,0.03];
-        speedLevel = 0.04;
+        speedLevel = 0.1;
     end
-
-    text(ax, 0.5, 0.5, choose_difficulty_message, 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
-    text(ax, 0.5, 0.5, ['Difficulty:', choice], 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
+    %text(ax, 0.5, 0.5, ['Difficulty:', choice], 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
 
 % WHILE LOOP FOR KEY PRESS/PADDLE MOVEMENT, BALL MOVEMENT, AND SCORING
 
