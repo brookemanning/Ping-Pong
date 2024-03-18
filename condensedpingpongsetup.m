@@ -260,5 +260,5 @@ function condensedpingpongsetup()
     end
 %game code ends HERE ------------------
 
-%whole ping pong ends HERE ------------------
 end
+%whole ping pong ends HERE ------------------
