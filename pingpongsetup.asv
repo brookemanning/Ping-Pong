@@ -24,29 +24,42 @@ function pingpongsetup()
     medium_mode = text(ax,0.5,0.48,'medium','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
     hard_mode = text(ax,0.5,0.38,'hard','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
 
-    %set callback function for easy mode
-    set(easy_mode,'ButtonDownFcn',@starteasy)
-    %callback function for easy mode
-    function starteasy(~,~)
-        close(board);
-        easymode_pingpong();
+    function mode_selector()
+    
+        %set callback function for easy mode
+        set(easy_mode,'ButtonDownFcn',@starteasy)
+        %callback function for easy mode
+        function starteasy(~,~)
+            close(board);
+            easymode_pingpong();
+        end
+    
+        %set callback function for medium mode
+        set(medium_mode,'ButtonDownFcn',@startmedium)
+        %callback function for medium mode
+        function startmedium(~,~)
+            close(board);
+            mediummode_pingpong();
+        end
+    
+        %set callback function for hard mode
+        set(hard_mode,'ButtonDownFcn',@starthard)
+        %callback function for hard mode
+        function starthard(~,~)
+            close(board);
+            hardmode_pingpong();
+        end
+    
+        %set callback function for replay
+        %create options: easy, medium, hard
+        %replay = text(ax,0.5,0.58,'easy','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
+        %set(replay, 'ButtonDownFcn', @replay)
+        %function replay(~,~)
+         %   close(board);
+        %end
     end
+    mode_selector(easy_mode, medium_mode, hard_mode);
 
-    %set callback function for medium mode
-    set(medium_mode,'ButtonDownFcn',@startmedium)
-    %callback function for medium mode
-    function startmedium(~,~)
-        close(board);
-        mediummode_pingpong();
-    end
-
-    %set callback function for hard mode
-    set(hard_mode,'ButtonDownFcn',@starthard)
-    %callback function for hard mode
-    function starthard(~,~)
-        close(board);
-        hardmode_pingpong();
-    end
 %mode selector ends HERE ------------------
 
 %EASY mode ping pong starts HERE ------------------
@@ -202,8 +215,10 @@ function pingpongsetup()
         game_over = true; 
         if score_playerA == winning_score
             game_over_message = 'Game is over! Player A wins'; 
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart);
         else 
             game_over_message = 'Game is over! Player B wins';
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart);
         end 
 
     text(ax, 0.5, 0.5, game_over_message, 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
@@ -247,17 +262,13 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
-
-    %create replay 
-    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
-    set(replay,'ButtonDownFcn',@replaypong);
-    %callback function to start a new game of easy ping pong
-    function replaypong(~, ~)
-        close(board);
-        pingpongsetup();
     end
 
-    end
+%callback function to start a new game of easy ping pong
+ function restart(~, ~)
+    close(board);
+    mode_selector(easy_mode, medium_mode, hard_mode);
+end
 %EASY mode ping pong ends HERE ------------------
 
 
@@ -415,8 +426,10 @@ function pingpongsetup()
         game_over = true; 
         if score_playerA == winning_score
             game_over_message = 'Game is over! Player A wins'; 
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart_medium);
         else 
             game_over_message = 'Game is over! Player B wins';
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart_medium);
         end 
 
     text(ax, 0.5, 0.5, game_over_message, 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
@@ -460,17 +473,13 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
-
-    %create replay 
-    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
-    set(replay,'ButtonDownFcn',@replaypong);
-    %callback function to start a new game of easy ping pong
-    function replaypong(~, ~)
-        close(board);
-        pingpongsetup();
     end
 
-    end
+%callback function to start a new game of medium ping pong
+ function restart_medium(~, ~)
+    close(board);
+    mode_selector();
+end
 %MEDIUM mode ping pong ends HERE ------------------
 
 
@@ -513,7 +522,7 @@ function pingpongsetup()
         ballposition = ballposition_start; 
         ballcolor = uint8([255,193,59]);
         ball = rectangle('Parent',ax,'Position',[ballposition_start - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-        ballvelocity = [0.09,0.09];
+        ballvelocity = [0.04,0.04];
     
     % creating the scoreboard
         score_playerA = 0;
@@ -628,8 +637,10 @@ function pingpongsetup()
         game_over = true; 
         if score_playerA == winning_score
             game_over_message = 'Game is over! Player A wins'; 
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart_hard);
         else 
             game_over_message = 'Game is over! Player B wins';
+            replay = uicontrol('Parent', board, 'Style', 'pushbutton', 'String', 'Replay', 'Position',[500,300,200,50], 'FontSize',20, 'Callback',@restart_hard);
         end 
 
     text(ax, 0.5, 0.5, game_over_message, 'Color', 'White', 'FontSize', 30, 'HorizontalAlignment','center');
@@ -673,18 +684,14 @@ function pingpongsetup()
         set(paddleA_score, 'String', num2str(score_playerA));
         set(paddleB_score, 'String', num2str(score_playerB));
     end
-
-    %create replay 
-    replay = text(ax,0.5,0.3,'replay','Color','white','FontSize',27,'HorizontalAlignment','center','VerticalAlignment','middle','FontWeight','bold');
-    set(replay,'ButtonDownFcn',@replaypong);
-    %callback function to start a new game of easy ping pong
-    function replaypong(~, ~)
-        close(board);
-        pingpongsetup();
     end
 
-    end
+%callback function to start a new game of hard ping pong
+ function restart_hard(~, ~)
+    close(board);
+    mode_selector();
+end
 %HARD mode ping pong ends HERE ------------------
-    
+
 %end of whole ping pong
 end

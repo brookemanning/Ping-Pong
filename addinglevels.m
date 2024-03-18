@@ -66,6 +66,30 @@ function visual_ball_movement_v4()
     game_over = false; 
     winning_score = 5;
 
+    %create options
+    easy_mode = text(ax,0.5,0.58,'easy','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
+    medium_mode = text(ax,0.5,0.48,'medium','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
+    hard_mode = text(ax,0.5,0.38,'hard','Color','white','FontSize',30,'HorizontalAlignment','center','VerticalAlignment','middle');
+
+    %set callback function for easy
+    set(easy_mode,'ButtonDownFcn',@starteasy)
+    %callback function for easy?
+    function starteasy(~,~)
+        close(board);
+        easymode_pingpong();
+    end
+
+    %set callback function for medium
+    set(easy_mode,'ButtonDownFcn',@startmedium)
+    function startmedium(~,~)
+        close(board);
+        easymode_pingpong();
+    end
+
+%set callback function for hard
+%callback function for hard?
+
+
     %DEFINING LEVELS
 
     choose_difficulty_message = 'Choose the difficulty: 1. Easy, 2. Medium, 3. Hard';

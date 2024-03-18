@@ -513,7 +513,7 @@ function pingpongsetup()
         ballposition = ballposition_start; 
         ballcolor = uint8([255,193,59]);
         ball = rectangle('Parent',ax,'Position',[ballposition_start - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-        ballvelocity = [0.09,0.09];
+        ballvelocity = [0.04,0.04];
     
     % creating the scoreboard
         score_playerA = 0;
