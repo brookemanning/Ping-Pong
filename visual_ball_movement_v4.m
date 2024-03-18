@@ -38,7 +38,7 @@ function visual_ball_movement_v4()
     ballposition = ballposition_start; 
     ballcolor = uint8([255,193,59]);
     ball = rectangle('Parent',ax,'Position',[ballposition_start - ballradius,ballradius + (ballradius * 0.2),ballradius*2],'Curvature',1,'EdgeColor','none','FaceColor',ballcolor);
-    ballvelocity = [0.015,0.015];
+    ballvelocity = [0.03,0.03];
     
     %creating the scoreboard
     score_playerA = 0;
@@ -105,7 +105,7 @@ function visual_ball_movement_v4()
         end
         
         % set speed of paddles 
-        speedLevel = 0.03;
+        speedLevel = 0.04;
 
         %conditionals for the movement of paddles upon key press 
         if wKeyPressed
