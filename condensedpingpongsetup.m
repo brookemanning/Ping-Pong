@@ -1,7 +1,6 @@
 % in this version, the paddles move, ball moves and bounces, and score
 % correctly updates AND has 3 difficulties
 
-%potential adding callback function for level selector: yuki 
 
 %whole ping pong starts HERE ------------------
 function condensedpingpongsetup()
