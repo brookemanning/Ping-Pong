@@ -578,7 +578,7 @@ function pingpongsetup()
             end
         
         % set speed of paddles 
-        speedLevel = 0.09;
+        speedLevel = 0.1;
 
         % conditionals for the movement of paddles upon key press 
             if wKeyPressed
