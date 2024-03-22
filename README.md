@@ -22,6 +22,8 @@ Unfortunately, the final version of our code, condensedpingpongsetup.m, which in
 An earlier version, levels_v3, is fully functional. 
 
 We are linking demos below for each - firstly, condensedpingpongsetup, and then, levels_v3.  
+[]!(https://github.com/brookemanning/Ping-Pong/blob/35b66b39bb3e1ae60a734354d2860b26945cea71/condensedpingpongsetupGIF.gif)
 
-http://www.giphy.com/gifs/dQKUkQurVN5diP8IdQ
-http://www.giphy.com/gifs/xRLHpWsRNwLabY2SNd
+[]!(https://github.com/brookemanning/Ping-Pong/blob/35b66b39bb3e1ae60a734354d2860b26945cea71/levels_v3_pong.gif)
+condensedpingpongsetupGIF.gif
+
