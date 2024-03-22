@@ -162,7 +162,8 @@ function condensedpingpongsetup()
             inbounds_paddleAy = (ballposition(2) >= paddleAposition(2) && ballposition(2) <= paddleAposition(2) + paddleheight);
 
             if inbounds_paddleAx && inbounds_paddleAy
-                ballvelocity(1) = -ballvelocity(1) * (1 + randn * 0.1);
+                ballvelocity(1) = -ballvelocity(1);
+                ballvelocity(2) = ballvelocity(2) + randn * 0.02;
             end
 
             %check collision with paddle B
@@ -170,7 +171,8 @@ function condensedpingpongsetup()
             inbounds_paddleBy = (ballposition(2) >= paddleBposition(2) && ballposition(2) <= paddleBposition(2) + paddleheight);
         
             if inbounds_paddleBx && inbounds_paddleBy
-                ballvelocity(1) = -ballvelocity(1) * (1 + randn * 0.1);
+                ballvelocity(1) = -ballvelocity(1);
+                ballvelocity(2) = ballvelocity(2) + randn * 0.02;
             end
 
         % conditionals for the movement of paddles upon key press 
