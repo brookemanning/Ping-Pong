@@ -147,6 +147,7 @@ function pingpongsetup()
 
             if inbounds_paddleAx && inbounds_paddleAy
                 ballvelocity(1) = -ballvelocity(1);
+                ballvelocity(2) = ballvelocity(2) + randn * 0.02;
             end
 
             %check collision with paddle B
@@ -155,6 +156,7 @@ function pingpongsetup()
         
             if inbounds_paddleBx && inbounds_paddleBy
                 ballvelocity(1) = -ballvelocity(1);
+                ballvelocity(2) = ballvelocity(2) + randn * 0.02; 
             end
         
         % set speed of paddles 
