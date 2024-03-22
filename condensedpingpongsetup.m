@@ -1,5 +1,22 @@
-% in this version, the paddles move, ball moves and bounces, and score
-% correctly updates AND has 3 difficulties
+% % note: we used code from https://github.com/Seth-Joseph/Project/blob/main/pingPong.m
+% to guide our work. 
+
+%for the visuals, Yuki used the command figure, rectangle, text, axes as a
+%reference before adding new code. 
+
+% for ball velocity, Brooke used the code as a structure to update ball
+% position and velocity 
+
+%for the key press/paddle movement, Mia used the callback function as a
+%general structure before changing the code by using 'min,' 'max,'
+%functions in order to update the position of the paddles, and introducing
+%global variables. 
+
+%in addition, we added levels and a replay function to Seth's work.
+
+
+
+
 
 
 %whole ping pong starts HERE ------------------
@@ -178,15 +195,15 @@ function condensedpingpongsetup()
     %-- SCORING -- 
     % changed condition to 2*radius b/c i thought it wasn't registering
     % properly - was 0 before
-        if ballposition(1) <= ballradius*2 && ballvelocity(1) < 0 % if the ball has crossed the left side of the board and is still moving left
+    if ballposition(1) <= ballradius*2 && ballvelocity(1) < 0 % if the ball has crossed the left side of the board and is still moving left
         % if the y coordinate of the ball is less than the y coordinate of the paddle 
         % or the y coordinate of the ball is greater than the bottom edge of the paddle 
         % or the x coordinate of the ball is less than the paddle: 
-        if ballposition(2) < paddleBposition(2) || ballposition(2) > paddleBposition(2) + paddleheight || ballposition(1) + ballradius < paddleBposition(1)
-        score_playerB = score_playerB + 1; 
+        if ballposition(2) < paddleBposition(2) + paddleheight || ballposition(2) > paddleBposition(2) || ballposition(1) + ballradius < paddleBposition(1) + paddlewidth
+            score_playerB = score_playerB + 1; 
             update_score(); 
             ballposition = ballposition_start; 
-            pause(1); 
+            pause(1);      
         end 
     % if the ball has crossed the right side of the board and is still moving
     % right: 
