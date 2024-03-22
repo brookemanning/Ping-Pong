@@ -158,6 +158,7 @@ function pingpongsetup()
                 ballvelocity(1) = -ballvelocity(1);
                 ballvelocity(2) = ballvelocity(2) + randn * 0.02; 
             end
+
         
         % set speed of paddles 
         speedLevel = 0.03;
