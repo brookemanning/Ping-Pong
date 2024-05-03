@@ -119,6 +119,7 @@ function condensedpingpongsetup()
         paddleB_score = text(ax,0.55,0.1,strScoreB,'Color',[0.7,0.7,0.7],'FontSize',30,'HorizontalAlignment','center');
 
     %-- INITIALIZE ARROW KEY STATES --
+   
 
     % define variables in global function
         global wKeyPressed sKeyPressed upArrowPressed downArrowPressed;
