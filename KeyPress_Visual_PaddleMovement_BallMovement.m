@@ -1,4 +1,4 @@
-%creating background
+%creating the background
 tablecolor = uint8([42,54,74]);
 board = figure('Color',tablecolor,'Position',[150,200,1200,750]); 
 fig_position = get(board, 'Position'); %vector for board x, y, wid, h
